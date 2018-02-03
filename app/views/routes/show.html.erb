@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @route.number %>
+</p>
+
+<%= link_to 'Изменить', edit_route_path(@route) %>
+<%= link_to 'Назад', routes_path %>
+
