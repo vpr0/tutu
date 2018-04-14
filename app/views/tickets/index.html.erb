@@ -1,0 +1,31 @@
+
+<h1>Билеты</h1>
+<%= link_to 'На главную', root_path %>
+
+<table border="2">
+  <tr>
+    <th>Номер</th>
+    <th>Поезд</th>
+    <th>Начальная станция</th>
+    <th>Конечная станция</th>
+    <th>Пользователь</th>
+    <th> </th>
+    <th> </th>
+  </tr>
+
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= link_to ticket.number, ticket_path(ticket) %></td>
+      <td><%= ticket.train.number %></td>
+      <td><%= RailwayStation.find(ticket.start_station_id).title %></td>
+      <td><%= RailwayStation.find(ticket.end_station_id).title %></td>
+      <td><%= ticket.user.name %></td>
+      <td><%= link_to 'Изменить', edit_ticket_path(ticket) %></td>
+      <td><%= link_to 'Удалить', ticket_path(ticket),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Новый билет', new_ticket_path %>
