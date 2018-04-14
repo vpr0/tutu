@@ -1,0 +1,23 @@
+<p>
+  <strong>Пользователь:</strong>
+  <%= @user.name %>
+</p>
+
+<table border="2">
+  <tr>
+    <th>Билет</th>
+    <th>Поезд</th>
+    <th>Станция</th>
+  </tr>
+
+  <% @user.tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.number %></td>
+      <td><%= ticket.train.number %></td>
+      <td><%= ticket.railway_station.title %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Изменить', edit_user_path(@user) %>
+<%= link_to 'Назад', users_path %>

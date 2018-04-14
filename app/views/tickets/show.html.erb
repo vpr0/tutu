@@ -1,0 +1,20 @@
+<p>
+  <strong>Номер:</strong>
+  <%= @ticket.number %>
+</p>
+<p>
+  <strong>Пользователь:</strong>
+  <%= @ticket.user.name %>
+</p>
+
+<p>
+  <strong>Станция отправления:</strong>
+  <%= RailwayStation.find(@ticket.start_station_id).title %>
+</p>
+<p>
+  <strong>Станция прибытия:</strong>
+  <%= RailwayStation.find(@ticket.end_station_id).title %>
+</p>
+
+<%= link_to 'Изменить', edit_ticket_path(@ticket) %>
+<%= link_to 'Назад', tickets_path %>

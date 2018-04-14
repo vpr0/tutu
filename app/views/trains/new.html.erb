@@ -1,5 +1,11 @@
 <h1>Новый поезд</h1>
+<%= form_with(model: @train, local: true) do |form| %>
 
-<%= render 'form', train: @train %>
+  <%= render 'form', form: form %>
+
+  <div class="actions">
+    <%= form.submit 'Создать'%>
+  </div>
+<% end %>
 
 <%= link_to 'Назад', trains_path %>

@@ -1,9 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Номер:</strong>
+  <strong>Поезд:</strong>
   <%= @train.number %>
 </p>
+
+
+<table border="2">
+  <tr>
+    <th>Билет</th>
+    <th>Станция</th>
+    <th>Пользователь</th>
+  </tr>
+
+  <% @train.tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.number %></td>
+      <td><%= ticket.railway_station.title %></td>
+      <td><%= ticket.user.name %></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
