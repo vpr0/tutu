@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :railway_stations
   resources :tickets
   resources :routes
+  resources :wagons
   get 'welcome/index'
   root 'welcome#index'
 end

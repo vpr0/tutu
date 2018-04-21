@@ -4,11 +4,26 @@
   <strong>Поезд:</strong>
   <%= @train.number %>
 </p>
+<p>
+  <strong>На станции:</strong>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Не указано
+  <% end %>
+</p>
 
+<% if @train.route %>
+  <strong>Маршрут:</strong>
+    <%= @train.route.number %>
+<% else %>
+  Маршрут не назначен
+<% end %>
 
 <table border="2">
   <tr>
     <th>Билет</th>
+    <th>Станция</th>
     <th>Станция</th>
     <th>Пользователь</th>
   </tr>
@@ -16,11 +31,48 @@
   <% @train.tickets.each do |ticket| %>
     <tr>
       <td><%= ticket.number %></td>
-      <td><%= ticket.railway_station.title %></td>
+      <td><%= ticket.start_station.title %></td>
+      <td><%= ticket.end_station.title %></td>
       <td><%= ticket.user.name %></td>
     </tr>
   <% end %>
 </table>
+
+<p>Вагоны: </p>
+<table border="2">
+  <tr>
+    <th>Номер</th>
+    <th>Верхние места</th>
+    <th>Нижние места</th>
+    <th>Тип</th>
+  </tr>
+
+  <% @train.wagons.each do |wagon| %>
+    <tr>
+      <td><%= wagon.number %></td>
+      <td><%= wagon.seats_up %></td>
+      <td><%= wagon.seats_down %></td>
+      <td><%= wagon.wagon_type %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  Купейных вагонов:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Купе' }.size  %>
+  Верхник мест:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Купе' }.map(&:seats_up).sum %>
+  Нижних мест:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Купе' }.map(&:seats_down).sum %>
+</p>
+<p>
+  Плацкартных вагонов:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Плацкарт' }.size  %>
+  Верхник мест:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Плацкарт' }.map(&:seats_up).sum %>
+  Нижних мест:
+  <%= @train.wagons.select { |wagon| wagon.wagon_type == 'Плацкарт' }.map(&:seats_down).sum %>
+</p>
 
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
