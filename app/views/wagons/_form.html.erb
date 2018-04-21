@@ -1,0 +1,22 @@
+<%= render 'common/errors', resource: @wagon %>
+
+<div class="field">
+  <%= form.label :number %>
+  <%= form.number_field :number %>
+</div>
+<div class="field">
+  <%= form.label :train_id, "Поезд" %>
+  <%= form.collection_select :train_id, Train.all, :id, :number %>
+</div>
+<div class="field">
+  <%= form.label :seats_up %>
+  <%= form.number_field :seats_up %>
+</div>
+<div class="field">
+  <%= form.label :seats_down %>
+  <%= form.number_field :seats_down %>
+</div>
+<div class="field">
+  <%= form.label :wagon_type %>
+  <%= form.select :wagon_type, ['Купе', 'Плацкарт'] %>
+</div>

@@ -1,5 +1,5 @@
-<h1>Изменить поезд</h1>
-<%= form_with(model: @train) do |form| %>
+<h1>Изменить вагон</h1>
+<%= form_with(model: @wagon) do |form| %>
 
   <%= render 'form', form: form %>
 
@@ -7,4 +7,4 @@
     <%= form.submit 'Изменить'%>
   </div>
 <% end %>
-<%= link_to 'Назад', trains_path %>
+<%= link_to 'Назад', wagons_path %>

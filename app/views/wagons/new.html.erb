@@ -1,0 +1,11 @@
+<h1>Новый вагон</h1>
+<%= form_with(model: @wagon, local: true) do |form| %>
+
+  <%= render 'form', form: form %>
+
+  <div class="actions">
+    <%= form.submit 'Создать'%>
+  </div>
+<% end %>
+
+<%= link_to 'Назад', wagons_path %>

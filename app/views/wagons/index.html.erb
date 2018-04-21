@@ -1,0 +1,19 @@
+<h1>Все вагоны</h1>
+<%= link_to 'На главную', root_path %>
+
+<table border="2">
+  <tr>
+    <th>Номер</th>
+    <th>Тип</th>
+    <th>Верхние места</th>
+    <th>Нижние места</th>
+    <th>Номер поезда</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @wagons.each do |wagon| %>
+    <%= render wagon %>
+  <% end %>
+</table>
+
+<%= link_to 'Новый вагон', new_wagon_path %>
