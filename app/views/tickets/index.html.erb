@@ -9,6 +9,7 @@
     <th>Начальная станция</th>
     <th>Конечная станция</th>
     <th>Пользователь</th>
+    <th>ФИО</th>
     <th> </th>
     <th> </th>
   </tr>
@@ -20,6 +21,7 @@
       <td><%= RailwayStation.find(ticket.start_station_id).title %></td>
       <td><%= RailwayStation.find(ticket.end_station_id).title %></td>
       <td><%= ticket.user.name %></td>
+      <td><%= ticket.fio %></td>
       <td><%= link_to 'Изменить', edit_ticket_path(ticket) %></td>
       <td><%= link_to 'Удалить', ticket_path(ticket),
                       method: :delete,

@@ -6,7 +6,10 @@
   <strong>Пользователь:</strong>
   <%= @ticket.user.name %>
 </p>
-
+<p>
+  <strong>ФИО:</strong>
+  <%= @ticket.fio %>
+</p>
 <p>
   <strong>Станция отправления:</strong>
   <%= RailwayStation.find(@ticket.start_station_id).title %>
